@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# MongoDB database files (if any local DB)
+data/
+*.db
+
+# Cloudinary or other config caches
+.cache/
+
+# Test coverage
+coverage/
+
+# npm artifacts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Ignore Mac system files
+._*
+
+# Ignore any local config files
+config/local.*
+
+# Ignore uploaded files or temp storage
+uploads/
+temp/

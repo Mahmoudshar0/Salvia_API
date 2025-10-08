@@ -1,0 +1,439 @@
+api_documentation.txt
+text### API Documentation
+#### Project Overview
+This document outlines the API endpoints developed for the project as of October 03, 2025. All endpoints are hosted under the base URL `http://localhost:4005/api/`.
+
+---
+
+### A. Products (/api/products)
+#### 1. Get All Products
+- Method: GET
+- URL: /api/products
+- Headers: None
+- Body: None
+- Response:
+  ```json
+  {
+    "products": [
+      {
+        "_id": "1",
+        "name": "Product 1",
+        "description": "Description 1",
+        "price": 100,
+        "createdAt": "2025-10-03T06:00:00Z",
+        "updatedAt": "2025-10-03T06:00:00Z"
+      }
+    ]
+  }
+
+Status Code: 200 OK
+
+2. Create Product
+
+Method: POST
+URL: /api/products
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "name": "Product 1",
+  "description": "Description 1",
+  "price": 100
+}
+
+Response:
+json{
+  "message": "Product created successfully",
+  "product": {
+    "_id": "1",
+    "name": "Product 1",
+    "description": "Description 1",
+    "price": 100,
+    "createdAt": "2025-10-03T06:00:00Z",
+    "updatedAt": "2025-10-03T06:00:00Z"
+  }
+}
+
+Status Code: 201 Created
+
+
+B. Admin (/api/admin)
+1. Get Admin Data
+
+Method: GET
+URL: /api/admin
+Headers: Authorization: Bearer <token>
+Body: None
+Response:
+json{
+  "admin": {
+    "_id": "1",
+    "username": "admin1",
+    "email": "admin@example.com",
+    "createdAt": "2025-10-03T06:00:00Z",
+    "updatedAt": "2025-10-03T06:00:00Z"
+  }
+}
+
+Status Code: 200 OK
+
+2. Update Admin
+
+Method: PUT
+URL: /api/admin
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "username": "newadmin",
+  "email": "newadmin@example.com"
+}
+
+Response:
+json{
+  "message": "Admin updated successfully",
+  "admin": {
+    "_id": "1",
+    "username": "newadmin",
+    "email": "newadmin@example.com",
+    "createdAt": "2025-10-03T06:00:00Z",
+    "updatedAt": "2025-10-03T06:00:00Z"
+  }
+}
+
+Status Code: 200 OK
+
+
+C. Events (/api/events)
+1. Get All Events
+
+Method: GET
+URL: /api/events
+Headers: None
+Body: None
+Response:
+json{
+  "events": [
+    {
+      "_id": "1",
+      "title": "Event 1",
+      "date": "2025-10-10",
+      "createdAt": "2025-10-03T06:00:00Z",
+      "updatedAt": "2025-10-03T06:00:00Z"
+    }
+  ]
+}
+
+Status Code: 200 OK
+
+2. Create Event
+
+Method: POST
+URL: /api/events
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "title": "Event 1",
+  "date": "2025-10-10"
+}
+
+Response:
+json{
+  "message": "Event created successfully",
+  "event": {
+    "_id": "1",
+    "title": "Event 1",
+    "date": "2025-10-10",
+    "createdAt": "2025-10-03T06:00:00Z",
+    "updatedAt": "2025-10-03T06:00:00Z"
+  }
+}
+
+Status Code: 201 Created
+
+
+D. R&D (/api/rnd)
+1. Get R&D Data
+
+Method: GET
+URL: /api/rnd
+Headers: None
+Body: None
+Response:
+json{
+  "title": "Research & Development",
+  "description": "Our R&D efforts..."
+}
+
+Status Code: 200 OK
+
+2. Update R&D
+
+Method: PUT
+URL: /api/rnd
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "title": "New R&D Title",
+  "description": "Updated R&D description..."
+}
+
+Response:
+json{
+  "message": "R&D updated successfully",
+  "title": "New R&D Title",
+  "description": "Updated R&D description..."
+}
+
+Status Code: 200 OK
+
+
+E. Page Title (/api/page-title)
+1. Get Page Title
+
+Method: GET
+URL: /api/page-title
+Headers: None
+Body: None
+Response:
+json{
+  "title": "Home"
+}
+
+Status Code: 200 OK
+
+2. Update Page Title
+
+Method: PUT
+URL: /api/page-title
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "title": "New Home"
+}
+
+Response:
+json{
+  "message": "Page title updated successfully",
+  "title": "New Home"
+}
+
+Status Code: 200 OK
+
+
+F. Our Quality Commitment (/api/our-quality-commitment)
+1. Get Quality Commitment
+
+Method: GET
+URL: /api/our-quality-commitment
+Headers: None
+Body: None
+Response:
+json{
+  "title": "Our Quality Commitment",
+  "description": "Committed to quality..."
+}
+
+Status Code: 200 OK
+
+2. Update Quality Commitment
+
+Method: PUT
+URL: /api/our-quality-commitment
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "title": "Updated Quality Commitment",
+  "description": "Updated commitment details..."
+}
+
+Response:
+json{
+  "message": "Quality commitment updated successfully",
+  "title": "Updated Quality Commitment",
+  "description": "Updated commitment details..."
+}
+
+Status Code: 200 OK
+
+
+G. Certificates (/api/certificates)
+1. Get All Certificates
+
+Method: GET
+URL: /api/certificates/certificates
+Headers: None
+Body: None
+Response:
+json{
+  "certificates": [
+    {
+      "_id": "1",
+      "certificateBody": "Certified for quality management systems.",
+      "certificateNumber": "CERT001",
+      "expiryDate": "2026-10-03T00:00:00.000Z",
+      "image": "https://res.cloudinary.com/demo/image/upload/certificate1.jpg",
+      "createdAt": "2025-10-03T04:48:00Z",
+      "updatedAt": "2025-10-03T04:48:00Z"
+    }
+  ]
+}
+
+Status Code: 200 OK
+
+2. Create Certificate
+
+Method: POST
+URL: /api/certificates/certificates
+Headers: Authorization: Bearer <token>
+Body: form-data
+
+certificateBody=Certified for quality management systems.
+certificateNumber=CERT001
+expiryDate=2026-10-03 (format: YYYY-MM-DD)
+image=File (صورة الـ certificate)
+
+
+Response:
+json{
+  "message": "Certificate created successfully",
+  "certificate": {
+    "_id": "1",
+    "certificateBody": "Certified for quality management systems.",
+    "certificateNumber": "CERT001",
+    "expiryDate": "2026-10-03T00:00:00.000Z",
+    "image": "https://res.cloudinary.com/demo/image/upload/certificate1.jpg",
+    "createdAt": "2025-10-03T04:54:00Z",
+    "updatedAt": "2025-10-03T04:54:00Z"
+  }
+}
+
+Status Code: 201 Created
+
+3. Update Certificate
+
+Method: PUT
+URL: /api/certificates/certificates/:id (e.g., /api/certificates/certificates/1)
+Headers: Authorization: Bearer <token>
+Body: form-data
+
+certificateBody=Updated certification details (اختياري)
+certificateNumber=UpdatedCERT001 (اختياري)
+expiryDate=2027-10-03 (اختياري, format: YYYY-MM-DD)
+image=File (اختياري لتغيير الصورة)
+
+
+Response:
+json{
+  "message": "Certificate updated successfully",
+  "certificate": {
+    "_id": "1",
+    "certificateBody": "Updated certification details",
+    "certificateNumber": "UpdatedCERT001",
+    "expiryDate": "2027-10-03T00:00:00.000Z",
+    "image": "https://res.cloudinary.com/demo/image/upload/updated_certificate1.jpg",
+    "createdAt": "2025-10-03T04:48:00Z",
+    "updatedAt": "2025-10-03T04:54:00Z"
+  }
+}
+
+Status Code: 200 OK
+Note: لو مفيش صورة جديدة، بيحتفظ بالصورة القديمة.
+
+4. Delete Certificate
+
+Method: DELETE
+URL: /api/certificates/certificates/:id (e.g., /api/certificates/certificates/1)
+Headers: Authorization: Bearer <token>
+Body: None
+Response:
+json{
+  "message": "Certificate deleted successfully"
+}
+
+Status Code: 200 OK
+
+
+H. About Us (/api/about-us)
+1. Get Page Title and Intro
+
+Method: GET
+URL: /api/about-us/page
+Headers: None
+Body: None
+Response:
+json{
+  "pageTitle": "About Us",
+  "intro": "Welcome to our About Us section..."
+}
+
+Status Code: 200 OK
+
+2. Update Page Title and Intro
+
+Method: PUT
+URL: /api/about-us/page
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "pageTitle": "About Our Company",
+  "intro": "Learn more about our journey..."
+}
+
+Response:
+json{
+  "message": "Page updated successfully",
+  "pageTitle": "About Our Company",
+  "intro": "Learn more about our journey..."
+}
+
+Status Code: 200 OK
+
+3. Get Sections
+
+Method: GET
+URL: /api/about-us/sections
+Headers: None
+Body: None
+Response:
+json{
+  "sections": [
+    {"name": "Our History", "details": "A brief overview of our company’s journey..."},
+    {"name": "Our Mission", "details": "Dedicated to delivering excellence and innovation..."},
+    {"name": "Our Team", "details": "A talented group driving our success..."},
+    {"name": "Our Values", "details": "Guided by integrity and quality..."}
+  ]
+}
+
+Status Code: 200 OK
+
+4. Update Section
+
+Method: PUT
+URL: /api/about-us/section
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "sectionName": "Our History",
+  "newDetails": "Updated history of our company since 1990..."
+}
+
+Response:
+json{
+  "message": "Section updated successfully",
+  "sections": [
+    {"name": "Our History", "details": "Updated history of our company since 1990..."},
+    {"name": "Our Mission", "details": "Dedicated to delivering excellence and innovation..."},
+    {"name": "Our Team", "details": "A talented group driving our success..."},
+    {"name": "Our Values", "details": "Guided by integrity and quality..."}
+  ]
+}
+
+Status Code: 200 OK
+Note: Only details can be updated; section names are fixed.
+
+
+General Notes
+
+All protected endpoints require a valid Authorization: Bearer <token> header.
+Dates should be in YYYY-MM-DD format where applicable.
+Image uploads (e.g., for Certificates) are handled via Cloudinary, and the URL is stored in MongoDB.
+Default data is provided for About Us sections; other endpoints start empty until admin creates data.

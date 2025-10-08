@@ -1,0 +1,219 @@
+API Documentation
+================
+
+Base URL
+--------
+- http://localhost:4005/api/
+
+Authentication
+--------------
+- All PUT and POST endpoints are protected with JWT Token.
+- Obtain Token from: POST /api/admin/login with {"username": "admin", "password": "admin123"}.
+- Header: Authorization: Bearer <token>
+
+---
+
+Endpoints
+---------
+
+### A. Products (/api/products)
+- **Assumption**: Depends on products.route.js and productsController.js (not detailed, general endpoints).
+
+#### 1. Get All Products
+- Method: GET
+- URL: /api/products
+- Headers: None
+- Body: None
+- Response:
+  ```json
+  {
+    "products": [
+      {"_id": "1", "name": "Product1", "price": 100},
+      // ...
+    ]
+  }
+
+Status Code: 200 OK
+
+2. Update Product (If Protected)
+
+Method: PUT
+URL: /api/products
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{"name": "Updated Product", "price": 150}
+
+Response:
+json{"message": "Product updated successfully", "product": {"_id": "1", "name": "Updated Product", "price": 150}}
+
+Status Code: 200 OK
+
+B. Admin (/api/admin)
+1. Login
+
+Method: POST
+URL: /api/admin/login
+Headers: None
+Body: application/json
+json{"username": "admin", "password": "admin123"}
+
+Response:
+json{"token": "jwt_token_here"}
+
+Status Code: 200 OK
+
+C. Events (/api/events)
+1. Get All Events
+
+Method: GET
+URL: /api/events
+Headers: None
+Body: None
+Response:
+json{
+  "eventsPageTitle": "Events",
+  "events": [
+    {"_id": "1", "title": "Event1", "date": "2025-10-10", "location": "Cairo"}
+  ]
+}
+
+Status Code: 200 OK
+
+2. Create Event
+
+Method: POST
+URL: /api/events
+Headers: Authorization: Bearer <token>
+Body: form-data
+
+title=Event1
+date=2025-10-10
+location=Cairo
+description=Desc
+highlights=Highlights
+cta=Join
+image=File
+
+
+Response:
+json{"_id": "1", "title": "Event1", "date": "2025-10-10", "location": "Cairo", ...}
+
+Status Code: 201 Created
+
+3. Update Event
+
+Method: PUT
+URL: /api/events/:id (e.g., /api/events/1)
+Headers: Authorization: Bearer <token>
+Body: form-data
+
+title=Updated Event
+
+
+Response:
+json{"_id": "1", "title": "Updated Event", "date": "2025-10-10", "location": "Cairo", ...}
+
+Status Code: 200 OK
+
+D. Page Title (/api/page-title)
+1. Get Page Title
+
+Method: GET
+URL: /api/page-title
+Headers: None
+Body: None
+Response:
+json{"eventsPageTitle": "Events"}
+
+Status Code: 200 OK
+
+2. Update Page Title
+
+Method: PUT
+URL: /api/page-title
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{"eventsPageTitle": "Next Events"}
+
+Response:
+json{"message": "Page title updated successfully", "eventsPageTitle": "Next Events"}
+
+Status Code: 200 OK
+
+E. R&D (/api/rnd)
+1. Get Page Title and Intro
+
+Method: GET
+URL: /api/rnd/page
+Headers: None
+Body: None
+Response:
+json{
+  "pageTitle": "Research & Development",
+  "intro": "Welcome to our R&D section..."
+}
+
+Status Code: 200 OK
+
+2. Update Page Title and Intro
+
+Method: PUT
+URL: /api/rnd/page
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "pageTitle": "Updated R&D",
+  "intro": "Updated intro"
+}
+
+Response:
+json{
+  "message": "Page updated successfully",
+  "pageTitle": "Updated R&D",
+  "intro": "Updated intro"
+}
+
+Status Code: 200 OK
+
+3. Get Sections
+
+Method: GET
+URL: /api/rnd/sections
+Headers: None
+Body: None
+Response:
+json{
+  "sections": [
+    {"name": "Innovation in Agriculture", "details": "Default details for Innovation in Agriculture..."},
+    {"name": "Product Development", "details": "Default details for Product Development..."},
+    {"name": "Quality & Safety Research", "details": "Default details for Quality & Safety Research..."},
+    {"name": "Packaging & Shelf-Life Studies", "details": "Default details for Packaging & Shelf-Life Studies..."},
+    {"name": "Pyrrolizidine Alkaloids (PAs) & PAHs", "details": "Default details for PAs & PAHs..."},
+    {"name": "Packaging & Integrity", "details": "Default details for Packaging & Integrity..."},
+    {"name": "Commitment to Progress", "details": "Default details for Commitment to Progress..."}
+  ]
+}
+
+Status Code: 200 OK
+
+4. Update Section
+
+Method: PUT
+URL: /api/rnd/section
+Headers: Authorization: Bearer <token>
+Body: application/json
+json{
+  "sectionName": "Innovation in Agriculture",
+  "newDetails": "New updated details focusing on sustainable farming..."
+}
+
+Response:
+json{
+  "message": "Section updated successfully",
+  "sections": [
+    {"name": "Innovation in Agriculture", "details": "New updated details focusing on sustainable farming..."},
+    // ... other sections
+  ]
+}
+
+Status Code: 200 OK
