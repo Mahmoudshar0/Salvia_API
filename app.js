@@ -26,7 +26,9 @@ const connect = async () => {
     }
 };
 connect();
-
+app.get("/test", (req, res) => {
+    res.json({msg:"helloo from the ec2 instance"})
+})
 app.use('/api/products', productRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/events', eventRouter);
