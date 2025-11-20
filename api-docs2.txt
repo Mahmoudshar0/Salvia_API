@@ -428,7 +428,6 @@ json{
 }
 
 Status Code: 200 OK
-Note: Only details can be updated; section names are fixed.
 
 
 General Notes

@@ -55,16 +55,17 @@ exports.getSections = async (req, res) => {
 
 exports.updateSection = async (req, res) => {
   try {
-    const { sectionName, newDetails } = req.body;
+    const { sectionName, newDetails, sectionId } = req.body;
     let rnd = await Rnd.findOne();
     if (!rnd) {
       return res.status(404).json({ message: 'R&D not found' });
     }
-    const section = rnd.sections.find(sec => sec.name === sectionName);
+    const section = rnd.sections.find(sec => sec._id == sectionId);
     if (!section) {
       return res.status(404).json({ message: 'Section not found' });
     }
     section.details = newDetails || section.details;
+    section.name = sectionName || section.name;
     await rnd.save();
     res.status(200).json({ message: 'Section updated successfully', sections: rnd.sections });
   } catch (error) {

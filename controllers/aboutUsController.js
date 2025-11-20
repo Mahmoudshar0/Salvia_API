@@ -52,7 +52,8 @@ exports.getSections = async (req, res) => {
 
 exports.updateSection = async (req, res) => {
   try {
-    const { sectionName, newDetails } = req.body;
+    console.log(req.body.sectionId);
+    const { sectionName, newDetails, sectionId } = req.body;
     let about = await AboutUs.findOne();
     if (!about) {
       about = new AboutUs({
@@ -66,11 +67,14 @@ exports.updateSection = async (req, res) => {
       await about.save();
       console.log('Created default About Us document with default sections');
     }
-    const section = about.sections.find(sec => sec.name === sectionName);
+    console.log(about.sections[0]._id);
+    const section = about.sections.find(sec => sec._id == sectionId);
+    console.log(section);
     if (!section) {
       return res.status(404).json({ message: 'Section not found' });
     }
     section.details = newDetails || section.details;
+    section.name = sectionName || section.name;
     await about.save();
     res.status(200).json({ message: 'Section updated successfully', sections: about.sections });
   } catch (error) {

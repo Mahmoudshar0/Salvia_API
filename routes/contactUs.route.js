@@ -5,6 +5,6 @@ const auth = require('../middleware/auth');
 
 router.get('/site-info', contactUsController.getSiteInfo);
 router.put('/site-info', auth, contactUsController.updateSiteInfo);
-router.post('/inquiry', contactUsController.sendInquiry); // أضيفنا تاني
+router.post('/inquiry', contactUsController.sendInquiry);
 
 module.exports = router;
