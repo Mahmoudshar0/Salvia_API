@@ -14,10 +14,12 @@ const siteShowcaseTwoRouter = require("./routes/siteShowcaseTwo.route");
 const pageTitleRouter = require("./routes/pageTitle.route");
 const galleryRouter = require("./routes/gallery.route");
 const audioRouter = require("./routes/audio.route");
+const sayRouter = require("./routes/say.route");
 const connectDB = require("./Config/db");
 const cors = require("cors");
 app.use(cors());
 app.use(express.json());
+const { upload } = require("./middleware/upload");
 
 const connect = async () => {
   try {
@@ -29,9 +31,13 @@ const connect = async () => {
   }
 };
 connect();
+
 app.get("/test", (req, res) => {
   res.json({ msg: "helloo from the ec2 instance" });
 });
+
+
+
 app.use("/api/products", productRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/events", eventRouter);
@@ -45,6 +51,7 @@ app.use("/api/site-showcase", siteShowcaseRouter);
 app.use("/api/site-showcase-two", siteShowcaseTwoRouter);
 app.use("/api/gallery", galleryRouter);
 app.use("/api/audio", audioRouter);
+app.use("/say", sayRouter);
 
 const PORT = process.env.PORT || 4005;
 app.listen(PORT, () => {

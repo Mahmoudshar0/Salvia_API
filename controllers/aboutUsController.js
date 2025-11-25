@@ -25,6 +25,7 @@ exports.updatePage = async (req, res) => {
   try {
     const { pageTitle, intro } = req.body;
     let about = await AboutUs.findOne();
+    console.log(about);
     if (!about) {
       about = new AboutUs({ pageTitle, intro });
     } else {
@@ -52,6 +53,7 @@ exports.getSections = async (req, res) => {
 
 exports.updateSection = async (req, res) => {
   try {
+    console.log(req.body);
     console.log(req.body.sectionId);
     const { sectionName, newDetails, sectionId } = req.body;
     let about = await AboutUs.findOne();

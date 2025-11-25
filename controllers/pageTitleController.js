@@ -16,6 +16,7 @@ exports.getPageTitle = async (req, res) => {
 
 exports.updatePageTitle = async (req, res) => {
   try {
+    console.log(req.body);
     const { eventsPageTitle } = req.body;
     let title = await PageTitle.findOne();
     if (!title) {
